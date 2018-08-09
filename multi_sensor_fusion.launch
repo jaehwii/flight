@@ -1,0 +1,11 @@
+<launch>
+
+
+	<!-- MULTI SENSOR FUSION -->
+<!-- -->
+	<node name="multi_sensor_fusion" pkg="multi_sensor_fusion" type="multi_sensor_fusion" launch-prefix="screen" >
+	</node>	
+
+
+
+</launch>

@@ -1,7 +1,7 @@
 <launch>
 	<node pkg="vrpn_client_ros" type="vrpn_client_node" name="vrpn_client_node" >
 
-		<param name="server" value="192.168.0.28" type="str" />
+		<param name="server" value="192.168.0.3" type="str" />
 		<param name="port" value="801" type="str" />
 		<param name="update_frequency" value="240.0"/>
 		<param name="frame_id" value="world" type="str" />
@@ -40,26 +40,4 @@
 		<arg name="log_output" value="$(arg log_output)" />
 	</include>
 
-	<node pkg="rosbag" type="record" name="record" output="screen" args="
-	/mavros/imu/data_raw
-	/mavros/imu/mag
-	/mavros/vision_pose/pose
-	
-	/mavros/local_position/pose
-	/mavros/local_position/velocity
-
-	/vrpn_client_node/odar/pose
-	
-	/mavros/odar/init_pose
-	/mavros/odar/pose
-	/mavros/odar/vel
-	/mavros/odar/desired_pose
-	/mavros/odar/desired_vel
-
-	/mavros/odar/wrench
-	/mavros/odar/pwm
-
-	/tf
-
-	-O /home/inrol/ROS_ODAR/bag/vicon_flight.bag "/>
 </launch>
