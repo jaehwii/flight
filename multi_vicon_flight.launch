@@ -1,7 +1,7 @@
 <launch>
 	<!-- VRPN CLIENT (MOCAP) -->
 
-	<node name="vrpn_client_node_1" pkg="vrpn_client_ros" type="vrpn_client_node" >
+	<node name="vrpn_client_node" pkg="vrpn_client_ros" type="vrpn_client_node" >
 
 		<param name="server" value="192.168.0.3" type="str" />
 		<param name="port" value="801" type="str" />
@@ -10,19 +10,7 @@
 		<param name="use_server_time" value="false" type="str" />
 		<param name="broadcast_tf" value="true" type="str" />
 		<param name="refresh_tracker_frequency" value="1.0"/>
-		<param name="trackers" value="lasdra1"/>
-	</node>
-
-	<node name="vrpn_client_node_2" pkg="vrpn_client_ros" type="vrpn_client_node" >
-
-		<param name="server" value="192.168.0.3" type="str" />
-		<param name="port" value="801" type="str" />
-		<param name="update_frequency" value="240.0"/>
-		<param name="frame_id" value="world" type="str" />
-		<param name="use_server_time" value="false" type="str" />
-		<param name="broadcast_tf" value="true" type="str" />
-		<param name="refresh_tracker_frequency" value="1.0"/>
-		<param name="trackers" value="lasdra2"/>
+		<param name="trackers" value="lasdra"/>
 	</node>
 
 
@@ -45,6 +33,8 @@
 		<param name="vicon_use" value="1" />
 		<param name="slam_use" value="0" />
 
+		<remap from="/vision_pose_adapter/vicon_use" to="/vision_pose_adapter_1/vicon_use"/>
+
 		<remap from="/mavros/odar/init_pose" to="/mavros_1/odar/init_pose"/>
 		<remap from="/mavros/vision_pose/pose" to="/mavros_1/vision_pose/pose"/>
 		<remap from="/vision_pose_adapter/vicon/framed_pose" to="/vision_pose_adapter_1/vicon/framed_pose"/>
@@ -53,7 +43,7 @@
 		<remap from="/mavros/local_position/velocity" to="/mavros_1/local_position/velocity"/>
 		<remap from="/mavros/global_position/raw/fix" to="/mavros_1/global_position/raw/fix"/>
 		<remap from="/mavros/global_position/raw/sat_num" to="/mavros_1/global_position/raw/sat_num"/>
-		<remap from="/vrpn_client_node/odar/pose" to="/vrpn_client_node_1/odar/pose"/>
+		<remap from="/vrpn_client_node/odar/pose" to="/vrpn_client_node/odar_1/pose"/>
 	</node>	
 
 
@@ -63,6 +53,8 @@
 		<param name="vicon_use" value="1" />
 		<param name="slam_use" value="0" />
 
+		<remap from="/vision_pose_adapter/vicon_use" to="/vision_pose_adapter_2/vicon_use"/>
+
 		<remap from="/mavros/odar/init_pose" to="/mavros_2/odar/init_pose"/>
 		<remap from="/mavros/vision_pose/pose" to="/mavros_2/vision_pose/pose"/>
 		<remap from="/vision_pose_adapter/vicon/framed_pose" to="/vision_pose_adapter_2/vicon/framed_pose"/>
@@ -71,7 +63,7 @@
 		<remap from="/mavros/local_position/velocity" to="/mavros_2/local_position/velocity"/>
 		<remap from="/mavros/global_position/raw/fix" to="/mavros_2/global_position/raw/fix"/>
 		<remap from="/mavros/global_position/raw/sat_num" to="/mavros_2/global_position/raw/sat_num"/>
-		<remap from="/vrpn_client_node/odar/pose" to="/vrpn_client_node_2/odar/pose"/>
+		<remap from="/vrpn_client_node/odar/pose" to="/vrpn_client_node/odar_2/pose"/>
 	</node>	
 
 

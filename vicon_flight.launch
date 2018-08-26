@@ -3,7 +3,7 @@
 
 		<param name="server" value="192.168.0.3" type="str" />
 		<param name="port" value="801" type="str" />
-		<param name="update_frequency" value="240.0"/>
+		<param name="update_frequency" value="100.0"/>
 		<param name="frame_id" value="world" type="str" />
 		<param name="use_server_time" value="false" type="str" />
 		<param name="broadcast_tf" value="true" type="str" />
@@ -23,7 +23,7 @@
 	</node>	
 
 
-	<arg name="fcu_url" default="/dev/ttyACM0:57600" />
+	<arg name="fcu_url" default="/dev/ttyUSB0:921600" />
 	<arg name="gcs_url" default="udp://:14550@127.0.0.1:14557" />
 	<arg name="tgt_system" default="1" />
 	<arg name="tgt_component" default="1" />
