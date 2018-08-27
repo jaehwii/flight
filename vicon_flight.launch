@@ -3,7 +3,7 @@
 
 		<param name="server" value="192.168.0.3" type="str" />
 		<param name="port" value="801" type="str" />
-		<param name="update_frequency" value="240.0"/>
+		<param name="update_frequency" value="100.0"/>
 		<param name="frame_id" value="world" type="str" />
 		<param name="use_server_time" value="false" type="str" />
 		<param name="broadcast_tf" value="true" type="str" />
