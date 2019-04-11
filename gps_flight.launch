@@ -6,7 +6,7 @@
 
 	<node name="vision_pose_adapter" pkg="vision_pose_adapter" type="vision_pose_adapter" launch-prefix="screen" >
 		<rosparam file="$(find vision_pose_adapter)/estimator_param.yaml"/>
-		<param name="vicon_use" value="1" />
+		<param name="vicon_use" value="0" />
 		<param name="slam_use" value="0" />
 	</node>	
 
