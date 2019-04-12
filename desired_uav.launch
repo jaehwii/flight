@@ -1,8 +1,0 @@
-<launch>
-
-	<node name="desired_uav" pkg="desired_uav" type="desired_uav_node" launch-prefix="screen" >
-		<rosparam file="$(find desired_uav)/parameter.yaml"/>
-	</node>	
-
-
-</launch>
