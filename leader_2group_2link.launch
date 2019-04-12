@@ -1,18 +1,4 @@
 <launch>
-	<!-- VRPN CLIENT (MOCAP) -->
-
-	<node name="vrpn_client_node" pkg="vrpn_client_ros" type="vrpn_client_node" >
-
-		<param name="server" value="192.168.0.3" type="str" />
-		<param name="port" value="801" type="str" />
-		<param name="update_frequency" value="100.0"/>
-		<param name="frame_id" value="world" type="str" />
-		<param name="use_server_time" value="false" type="str" />
-		<param name="broadcast_tf" value="true" type="str" />
-		<param name="refresh_tracker_frequency" value="1.0"/>
-		<param name="trackers" value="lasdra"/>
-	</node>
-
 
 	<!-- DESIRED UAV -->
 <!-- -->
@@ -27,12 +13,16 @@
 		<param name="link_number" value="2" />
 	</node>	
 
+	<!-- Communication -->
+	<node pkg="multi_sensor_fusion" name="semi_distributed_l" type="semi_distributed_l"  launch-prefix="screen">
+		<param name="group_number" value="2" />
+ 	</node>
 
 	<!-- VISION POSE ADAPTER -->
 
 	<node name="vision_pose_adapter_1" pkg="vision_pose_adapter" type="vision_pose_adapter" launch-prefix="screen" >
 		<rosparam file="$(find vision_pose_adapter)/estimator_param.yaml"/>
-		<param name="vicon_use" value="1" />
+		<param name="vicon_use" value="0" />
 		<param name="slam_use" value="0" />
 
 		<remap from="/vision_pose_adapter/vicon_use" to="/vision_pose_adapter_1/vicon_use"/>
@@ -52,7 +42,7 @@
 
 	<node name="vision_pose_adapter_2" pkg="vision_pose_adapter" type="vision_pose_adapter" launch-prefix="screen" >
 		<rosparam file="$(find vision_pose_adapter)/estimator_param.yaml"/>
-		<param name="vicon_use" value="1" />
+		<param name="vicon_use" value="0" />
 		<param name="slam_use" value="0" />
 
 		<remap from="/vision_pose_adapter/vicon_use" to="/vision_pose_adapter_2/vicon_use"/>
@@ -67,6 +57,7 @@
 		<remap from="/mavros/global_position/raw/sat_num" to="/mavros_2/global_position/raw/sat_num"/>
 		<remap from="/vrpn_client_node/odar/pose" to="/vrpn_client_node/odar_2/pose"/>
 	</node>	
+
 
 
 	<!-- MAVROS -->
@@ -104,6 +95,7 @@
 		<rosparam command="load" file="$(arg pluginlists_yaml)" />
 		<rosparam command="load" file="$(arg config_yaml)" />
 	</node>
+
 
 
 </launch>

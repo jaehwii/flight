@@ -13,6 +13,10 @@
 		<param name="link_number" value="2" />
 	</node>	
 
+	<!-- Communication -->
+	<node pkg="multi_sensor_fusion" name="semi_distributed_f" type="semi_distributed_f"  launch-prefix="screen">
+		<param name="group_number" value="2" />
+ 	</node>
 
 	<!-- VISION POSE ADAPTER -->
 
@@ -90,6 +94,7 @@
 		<rosparam command="load" file="$(arg pluginlists_yaml)" />
 		<rosparam command="load" file="$(arg config_yaml)" />
 	</node>
+
 
 
 </launch>
