@@ -16,6 +16,8 @@
 	<!-- Communication -->
 	<node pkg="multi_sensor_fusion" name="semi_distributed_l" type="semi_distributed_l"  launch-prefix="screen">
 		<param name="group_number" value="2" />
+		<param name="group1_link_number" value="2" />
+		<param name="group2_link_number" value="2" />
  	</node>
 
 	<!-- VISION POSE ADAPTER -->
