@@ -22,7 +22,7 @@
 
 	<node name="vision_pose_adapter_1" pkg="vision_pose_adapter" type="vision_pose_adapter" launch-prefix="screen" >
 		<rosparam file="$(find vision_pose_adapter)/estimator_param.yaml"/>
-		<param name="vicon_use" value="0" />
+		<param name="vicon_use" value="1" />
 		<param name="slam_use" value="0" />
 
 		<remap from="/vision_pose_adapter/vicon_use" to="/vision_pose_adapter_1/vicon_use"/>
@@ -42,7 +42,7 @@
 
 	<node name="vision_pose_adapter_2" pkg="vision_pose_adapter" type="vision_pose_adapter" launch-prefix="screen" >
 		<rosparam file="$(find vision_pose_adapter)/estimator_param.yaml"/>
-		<param name="vicon_use" value="0" />
+		<param name="vicon_use" value="1" />
 		<param name="slam_use" value="0" />
 
 		<remap from="/vision_pose_adapter/vicon_use" to="/vision_pose_adapter_2/vicon_use"/>
@@ -61,7 +61,7 @@
 	
 	<node name="vision_pose_adapter_3" pkg="vision_pose_adapter" type="vision_pose_adapter" launch-prefix="screen" >
 		<rosparam file="$(find vision_pose_adapter)/estimator_param.yaml"/>
-		<param name="vicon_use" value="0" />
+		<param name="vicon_use" value="1" />
 		<param name="slam_use" value="0" />
 
 		<remap from="/vision_pose_adapter/vicon_use" to="/vision_pose_adapter_3/vicon_use"/>
@@ -76,6 +76,18 @@
 		<remap from="/mavros/global_position/raw/sat_num" to="/mavros_3/global_position/raw/sat_num"/>
 		<remap from="/vrpn_client_node/odar/pose" to="/vrpn_client_node/odar_3/pose"/>
 	</node>	
+
+        <!-- VRPN CLIENT (MOCAP) -->
+        <node name="vrpn_client_node" pkg="vrpn_client_ros" type="vrpn_client_node" >
+                <param name="server" value="192.168.0.220" type="str" />
+                <param name="port" value="801" type="str" />
+                <param name="update_frequency" value="240.0" />
+                <param name="frame_id" value="world" type="str" />
+                <param name="use_server_time" value="false" type="str" />
+                <param name="broadcast_tf" value="true" type="str" />
+                <param name="refresh_tracker_frequency" value="1.0" />
+                <param name="trackers" value="lasdra" />
+        </node>
 
 
 	<!-- MAVROS -->
