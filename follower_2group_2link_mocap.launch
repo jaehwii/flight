@@ -61,7 +61,7 @@
 
 	<!-- VRPN CLIENT (MOCAP) -->
         <node name="vrpn_client_node" pkg="vrpn_client_ros" type="vrpn_client_node" >
-                <param name="server" value="192.168.0.220" type="str" />
+                <param name="server" value="192.168.0.2" type="str" />
                 <param name="port" value="801" type="str" />
                 <param name="update_frequency" value="240.0" />
                 <param name="frame_id" value="world" type="str" />
