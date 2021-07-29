@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<launch>
+
+	<!-- Machine setting -->
+	<arg name="slave_env_path" default="/home/inrol/.local/share/lasdra-home/entry"/>
+	<arg name="slave_ip" default="10.0.1.3"/>
+	<machine
+		name="slave_rasp" address="$(arg slave_ip)"
+		env-loader="$(arg slave_env_path)" default="never" user="inrol"/>
+	<arg name = "machine" value = "slave_rasp"/>
+	
+	<!--Ft sensors -->
+	<arg name="netft_address_base" default="192.168.10.58"/>
+	<arg name="netft_address_end" default="192.168.10.26"/>
+  
+	<node name="netft_node_base" pkg="netft_utils" type="netft_node" args="--address $(arg netft_address_base)" output="screen" machine="$(arg machine)">
+  <remap from="netft_data" to="netft_base/data"/>
+	<remap from="netft_ready" to="netft_base/ready"/>
+	</node>
+
+	<node name="netft_node_end" pkg="netft_utils" type="netft_node" args="--address $(arg netft_address_end)" output="screen" machine="$(arg machine)">
+  <remap from="netft_data" to="netft_end/data"/>
+	<remap from="netft_ready" to="netft_end/ready"/>
+	</node>
+
+
+	<!-- IMU sensors -->
+
+
+	<node pkg="phidgets_imu" type="phidgets_imu_node" name="phidgets_imu_node1" 
+    output="screen" machine="$(arg machine)">
+    # supported data rates: 4 8 16 24 32 40 ... 1000 (in ms)
+    <param name="period" value="4"/>
+    <param name="serial_number" value="484749"/>
+    <remap from="imu/data_raw" to="imu1/data"/>
+    <remap from="imu/is_calibrated" to="imu1/is_calibrated"/>
+    <remap from="imu/mag" to="imu1/mag"/>
+  </node>
+
+  <node pkg="phidgets_imu" type="phidgets_imu_node" name="phidgets_imu_node2" 
+    output="screen" machine="$(arg machine)">
+    # supported data rates: 4 8 16 24 32 40 ... 1000 (in ms)
+    <param name="period" value="4"/>
+    <param name="serial_number" value="484738"/>
+    <remap from="imu/data_raw" to="imu2/data"/>
+    <remap from="imu/is_calibrated" to="imu2/is_calibrated"/>
+    <remap from="imu/mag" to="imu2/mag"/>
+  </node>
+  
+	<node pkg="phidgets_imu" type="phidgets_imu_node" name="phidgets_imu_node3" 
+    output="screen" machine="$(arg machine)">
+    # supported data rates: 4 8 16 24 32 40 ... 1000 (in ms)
+    <param name="period" value="4"/>
+    <param name="serial_number" value="531680"/>
+    <remap from="imu/data_raw" to="imu3/data"/>
+    <remap from="imu/is_calibrated" to="imu3/is_calibrated"/>
+    <remap from="imu/mag" to="imu3/mag"/>
+  </node>
+ 	
+	<node pkg="phidgets_imu" type="phidgets_imu_node" name="phidgets_imu_node4" 
+    output="screen" machine="$(arg machine)">
+    # supported data rates: 4 8 16 24 32 40 ... 1000 (in ms)
+    <param name="period" value="4"/>
+    <param name="serial_number" value="596353"/>
+    <remap from="imu/data_raw" to="imu4/data"/>
+    <remap from="imu/is_calibrated" to="imu4/is_calibrated"/>
+    <remap from="imu/mag" to="imu4/mag"/>
+	</node>
+ 	
+	<node pkg="phidgets_imu" type="phidgets_imu_node" name="phidgets_imu_node5" 
+    output="screen" machine="$(arg machine)">
+    # supported data rates: 4 8 16 24 32 40 ... 1000 (in ms)
+    <param name="period" value="4"/>
+    <param name="serial_number" value="596369"/>
+    <remap from="imu/data_raw" to="imu5/data"/>
+    <remap from="imu/is_calibrated" to="imu5/is_calibrated"/>
+    <remap from="imu/mag" to="imu5/mag"/>
+  </node>
+	
+	<node pkg="phidgets_imu" type="phidgets_imu_node" name="phidgets_imu_node6" 
+    output="screen" machine="$(arg machine)">
+    # supported data rates: 4 8 16 24 32 40 ... 1000 (in ms)
+    <param name="period" value="4"/>
+    <param name="serial_number" value="595655"/>
+    <remap from="imu/data_raw" to="imu6/data"/>
+    <remap from="imu/is_calibrated" to="imu6/is_calibrated"/>
+    <remap from="imu/mag" to="imu6/mag"/>
+  </node>
+		
+
+</launch>
